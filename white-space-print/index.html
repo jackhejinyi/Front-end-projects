@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Print white space in console</title>
+    <!-- Get this error when putting script tag here: 
+     Uncaught TypeError: Cannot read properties of null (reading 'innerHTML') -->
+    <!-- <script src="scrpits/main.js"></script> -->
+</head>
+<!-- Results are same when viewing in browser -->
+<!-- Results are not same when print the message in console -->
+<p id="noWhiteSpace"> Dog are smart.</p>
+<p id="WhiteSpace">
+    Dog
+    are
+    smart.</p>
+<!-- Move script tag from head to here, errors are gone-. You can get printed message in console of DevTools->
+<script src="scrpits/main.js"></script>
+</html>
