@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lan="en-US">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width"/>
+        <title>Strings example demo</title>
+        <link href="style.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <h2>String concatenation</h2>
+        
+        <!-- // Demo string concatenation -->
+         <div class="stringCont"> 
+             <button class="pressMe">Press me</button>
+             <p id="greeting"></p>
+         </div>
+         
+        <h2>Show message including Christmas</h2>
+        
+        <div>
+            <button class="christmasButton">Show message including Christmas</button>
+
+            <ul class="output">
+
+            </ul>
+        </div>
+        
+        <h3>Normalize city</h3>
+        <div>
+            <button class="normalizeCityButton">Normalize City</button>
+            <ul class="normalizeCityList"></ul>
+        </div>
+
+        <h3>Extract city code</h3>
+        <div class="extractCity">
+            <button class="extractCityButton">Extract city info</button>
+            <ul class="extractCityList"></ul>
+        </div>
+
+        <script>
+            // Uncaught SyntaxError: Unexpected identifier 'is' (at strings/:15:37)
+            // const badString3 = This is a test';
+            // const badString1 = This is a test;
+            // Uncaught SyntaxError: Invalid or unexpected token (at strings/:12:32)
+            // const badString2 = 'This is a test; 
+            
+            // Task #1
+            const button = document.querySelector(".pressMe");
+            const stringCont = document.querySelector(".stringCont");
+
+            function greeting() {
+                const name = prompt("What's your name?");
+                const greeting = document.querySelector("#greeting");
+                greeting.textContent = `Hello ${name}, nice to meeting you!`;
+
+                stringCont.appendChild(greeting);
+            }
+
+            button.addEventListener("click", greeting);
+
+            // Task #2 to show messages including Christmas
+            const arr = ["Happy Birthday!", 
+            "Merry Christmas my love", 
+            "A happy Christmas to all the family",
+            "You're all I want for Christmas",
+            "Get well soon"];
+            
+            const christmasButton = document.querySelector(".christmasButton");
+            
+            function getChristmasMess() {
+                const list = document.querySelector(".output");
+                list.textContent = "";
+
+                for (const item of arr){
+                    if (item.includes("Christma")){
+                        const i = document.createElement("li");
+                        i.textContent = item; 
+                        list.appendChild(i);
+                    }
+                }
+            }
+
+            christmasButton.addEventListener("click", getChristmasMess);
+
+            // Pracitce to normalize city name
+            const city = ["lonDon", 
+                "ManCHESTer", 
+                "BiRmiNGHAM",
+                "liVERpoOL"];
+            
+            const normalizeCityButton = document.querySelector(".normalizeCityButton");
+            // const normaizeCity = document.querySelector("normalizeCity");
+                
+            function normalizeCityName() {
+                const normalizeCityList = document.querySelector(".normalizeCityList");
+                normalizeCityList.textContent = ""; // Reset text content
+
+                for (const item of city){
+                    let newName = item.toLowerCase(); // Lowercase all chars
+                    const capFirst = newName[0].toUpperCase(); // Uppercase the first char
+                    const result = newName.replace(newName[0], capFirst); // Replace first char
+                    const li = document.createElement("li");
+                    li.textContent = result;
+                    normalizeCityList.appendChild(li);
+                }
+            }
+
+            normalizeCityButton.addEventListener("click", normalizeCityName);
+
+            // task #3
+            const extractCityButton = document.querySelector("extractCityButton");
+
+            const cityList = ["MAN675847583748sjt567654;Manchester Piccadilly",
+            "GNF576746573fhdg4737dh4;Greenfield",
+            "LIV5hg65hd737456236dch46dg4;Liverpool Lime Street",
+            "SYB4f65hf75f736463;Stalybridge",
+            "HUD5767ghtyfyr4536dh45dg45dg3;Huddersfield"];
+
+            // Extract city information according to requirements
+            function extractCityInfo(){
+                
+                const extractCityList = document.querySelector("extractCityList");
+                extractCityList.textContent = "";
+                
+                for (const city of cityList){
+                    const result = city.slice(0, 3) + ": " + city.slice(city.indexOf(";") + 1);
+                    const li = document.createElement("li");
+                    li.textContent = result;
+                    extractCityList.appendChild(li);
+                }
+            }
+
+            extractCityButton.addEventListener("click", extractCityInfo);
+
+        </script>
+    </body>
+
+
+</html>
