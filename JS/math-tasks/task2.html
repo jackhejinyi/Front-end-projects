@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Variables: Task 1</title>
+    <style>
+      p {
+        color: purple;
+        margin: 0.5em 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+    </style>
+    <!-- <link rel="stylesheet" href="../styles.css" /> -->
+  </head>
+
+  <body>
+    <section class="preview">
+
+
+    </section>
+
+    <script>
+        let result = 7 + 13 / 9 + 7;
+        let result2  = 100 / 2 * 6;
+
+        result *= result2;
+        let finalResult = result.toFixed(2);
+        // Valdiate codes
+        // let finalNumber = "4633.33";        
+        // finalResult = String(finalResult);
+        let finalNumber = typeof(finalResult) === "number" ? result : Number(result);        
+
+        const section = document.querySelector(".preview");
+        section.innerHTML = "";
+        
+        const para1 = document.createElement("p");
+        para1.textContent = `Your final result is ${finalResult}`;
+
+        const para2 = document .createElement("p");
+        const finalNumberCheck = typeof(finalNumber) === "number" ? `FinalNumber is a number type. Well done!` : `Ooops!`;
+        para2.textContent = finalNumberCheck;
+
+        section.appendChild(para1);
+        section.appendChild(para2);
+    </script>
+  </body>
+</html>
