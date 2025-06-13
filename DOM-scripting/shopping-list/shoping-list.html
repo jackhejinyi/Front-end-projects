@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple DOM example</title>
+    <link href="style.css" rel="stylesheet"/>
+  </head>
+
+  <body>
+    <h2>My shopping list</h2>
+    
+    <section>
+        <label for="shoppingList">Enter a new item: </label>
+        <input id="shoppingList" type="text"/><button class="addItembtn">Add item</button>
+        <ul></ul>
+    </section>
+
+    <script>
+        const input = document.querySelector("#shoppingList");
+        const addItemBtn = document.querySelector(".addItembtn");
+        const list = document.querySelector("section ul");
+
+        addItemBtn.addEventListener("click", () => {
+            // Format new item
+            let item = input.value.toLowerCase(); // Lowercase the item
+            const first = item.slice(0,1).toUpperCase(); // Capital first char
+            item = first + item.slice(1, item.length);
+
+            // Reset input to add new item for next
+            input.value = "";
+            input.focus();
+
+            // Add new item to an existing list
+            const li = document.createElement("li");
+            li.textContent = item;
+            
+            const liBtn = document.createElement("button");
+            
+            if (li.textContent !== "") {
+                liBtn.textContent = "Delete";
+                // liBtn.style.marginLeft = "10px";
+                liBtn.style.margin = "5px";
+                liBtn.addEventListener("click", () =>{
+                    li.remove();
+                });
+    
+                li.appendChild(liBtn);
+                list.appendChild(li);
+            }
+        });
+
+    </script>
+  </body>
+</html>

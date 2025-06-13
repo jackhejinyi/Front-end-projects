@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple DOM example</title>
+    <style>
+        /* Syntax is different using css style and js */
+        .highlight {
+            color:white; 
+            background-color: black;
+            padding: 10px;
+            width: 250px;
+            text-align: center;
+        }
+    </style>
+
+  </head>
+  <body>
+      <section>
+        <img src="dinosaur.png" alt="A red Tyrannosaurus Rex: A two legged dinosaur standing upright like a human, with small arms, and a large head with lots of sharp teeth.">
+        <p>Here we will add a link to the <a href="https://www.mozilla.org/">Mozilla homepage</a></p>
+      </section>
+
+      <script>
+        const link = document.querySelector("a");
+        const linkPara = document.querySelector("p");
+        
+        // Change link's content
+        link.textContent = "Mozilla Developer network";
+        
+        // Add one more text to paragraph 
+        const text = document.createTextNode(" — the premier source for web development knowledge.");
+        linkPara.appendChild(text);
+        
+        // Copy an existing element
+        const copy = linkPara.cloneNode(true);
+        const section = document.querySelector("section");
+        section.appendChild(copy);
+
+        // Remove an existing element
+        copy.remove();
+
+
+        // Style an existing paragraph using inline style
+        // linkPara.style.color = "white";
+        // linkPara.style.backgroundColor = "black";
+        // linkPara.style.padding = "10px";
+        // linkPara.style.width = "250px";
+        // linkPara.style.textAlign = "center";
+
+        // Style an existing paragraph using internal style
+        linkPara.setAttribute("class", "highlight");
+      </script>
+  </body>
+</html>
