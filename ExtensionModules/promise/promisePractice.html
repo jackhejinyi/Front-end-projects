@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Asynchronous javascript demo</title>
+    </head>
+
+    <body>
+        <script>
+            // Scenarios #1
+            // const fetchPromise = fetch("https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json");
+
+            // console.log(fetchPromise);
+
+            // fetchPromise.then((response) => {
+            //     console.log(`Received response: ${response.status}`);
+            // });
+
+            // console.log("Stated request...");
+
+            // // Scenarios #2: nested callback
+            // const fetchPromise = fetch("https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json",);
+
+            // console.log(fetchPromise);
+
+            // fetchPromise.then((response) => {
+            //     const josonPromise = response.json();
+            //     josonPromise.then((data) =>{
+            //         console.log(data[0].name);
+            //     }); 
+            // });
+
+            // console.log("Stated request...");
+
+            // // Scenarios #3: promise chaining like a few of then statement
+            // const fetchPromise = fetch("https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json",);
+
+            // console.log(fetchPromise);
+
+            // fetchPromise
+            // .then((response) => {
+            //     if(!response.ok) {
+            //         throw new Error(`HTTP error: ${response.status}`);
+            //     }
+                
+            //     return response.json()
+            // })
+            // .then((data) => console.log(data[0].name))
+            // .catch( error => console.error(`Could not get products: ${error}`));
+            
+            // console.log("Stated request...");
+
+            // // Combine multiple promises
+            // const fetchpromise1 = fetch("https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json",);
+            // const fetchpromise2 = fetch("https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/not-found",);
+            // const fetchpromise3 = fetch( "https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json",);
+            
+            // Promise.all([fetchpromise1, fetchpromise2, fetchpromise3])
+            // .then((responses) =>{
+            //     for (const response of responses) {
+            //         console.log(`${response.url}: ${response.status}`);
+            //     }
+            // })
+            // .catch(error => console.error(`Failed to fetch: ${error}`));
+
+            // // Scenario using asyn and await
+            // async function fetchProducts() {
+            //     try {
+            //         const response = await fetch("https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json",);
+            //         if (!response.ok) {
+            //             throw new error(`HTTP error: ${response.status}`);
+            //         }
+            //         const data =  await response.json();
+            //         console.log(`${data[2].name} $${data[2].price}`);
+            //     } catch (error) {
+            //         console.error(`Could not get products: ${error}`);
+            //     }
+            // } 
+            // fetchProducts();
+
+            // Scenario #4: can't work well
+            async function fetchProducts() {
+                try {
+                    const response = await fetch(
+                    "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json",
+                    );
+                    if (!response.ok) {
+                    throw new Error(`HTTP error: ${response.status}`);
+                    }
+                    const data = await response.json();
+                    return data;
+                } catch (error) {
+                    console.error(`Could not get products: ${error}`);
+                }
+            }
+            const promise = fetchProducts();
+            // // Call in bad way and meet error
+            // console.log(promise[0].name); // "promise" is a Promise object, so this will not work
+
+            // Fix error mention above
+            promise
+            .then((data) => console.log(`${data[0].name}`))
+            .catch(error => {
+                console.error(new Error(`Could not get product: ${error}`));
+            });
+        </script>
+    </body>
+</html>

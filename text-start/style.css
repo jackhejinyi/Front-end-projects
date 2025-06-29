@@ -1,0 +1,80 @@
+b {
+    font-weight: bold;
+}
+
+.task1 {
+    color: purple;
+}
+
+.task1-p {
+    color: grey;
+}
+
+.task2-ul {
+    border: 2px solid orange;
+}
+
+.task2-ol {
+    border: 2px solid purple;
+}
+
+.task2-ol, .task2-ul {
+    padding: 5px 20px;
+    border-radius: 4px;
+}
+
+.task3-h1 {
+    font-size:2rem;
+    margin:0;
+    color:purple;
+}
+
+.task3-dl {
+    color: grey;
+    margin: 0.5em 0;
+}
+
+.task3-dt {
+    font-weight: bold;
+    color: purple;
+}
+
+.task4-h1, .task4-strong {
+    color:purple;
+}
+
+.task4-p {
+    color:grey;
+}
+
+form.form-example {
+  display: table;
+}
+
+div.form-example {
+  display: table-row;
+}
+
+label,
+input {
+  display: table-cell;
+  margin-bottom: 10px;
+}
+
+label {
+  padding-right: 10px;
+}
+
+.semantic-task-1-h4 {
+    font-size:2rem;
+    margin: 0;
+    color:purple;
+}
+
+.semantic-task-1-p {
+    margin: 0.5em 0;
+}
+
+.semantic-task-1-time, .semantic-task-1-abbr {
+    color:green;
+}

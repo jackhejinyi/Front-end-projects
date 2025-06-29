@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Asynchronous javascript demo</title>
+    </head>
+
+    <body>
+        <h2>Generate primes</h2>
+        <label for="quota">Number of primes: </label>
+        <input type="text" id="quota" value="1000000"/>
+        <button id="generate">Generate primes</button>
+        <button id="reload">Reload</button> <br>
+        <textarea>Input something else here</textarea>
+        <div id="output"></div>
+        
+
+        <h2>EXMHttpRequest deal with asynchronous function</h2>
+        <div>
+            <button id="xhr">Click to start request</button>
+            <button id="relaod">Reload</button>
+        </div>
+        <pre readonly class="event-log"></pre>
+
+        <script>
+            // Generate primes
+            const MAX_PRIME = 1000000;
+
+            function isPrime(n) {
+                for (let i = 2; i <= Math.sqrt(n); i++) {
+                    if (n % i === 0) {
+                        return false;
+                    }
+                }
+                return n > 1;
+            }
+
+            const random = (max) => Math.floor(Math.random() * max);
+
+            function generatePrimes (quota) {
+                const primes = [];
+                while (primes.length < quota) {
+                    const candidate = random(MAX_PRIME);
+                    if (isPrime(candidate)) {
+                        primes.push(candidate);
+                    }
+                }
+                return primes;
+            } 
+
+            const quota = document.querySelector("#quota");
+            const output = document.querySelector("#output");
+
+            document.querySelector("#generate").addEventListener("click", () => {
+                    const start = performance.now(); // Start stopwatch
+                    const primes = generatePrimes(quota.value);
+                    const end = performance.now();
+                    const duration = (end - start).toFixed(2);
+                    output.textContent = `Finished generateing ${quota.value} primes in ${duration} ms!`;
+                });
+            
+            document.querySelector("#reload").addEventListener("click", () => {
+                document.location.reload();
+            });
+
+            // EXMHttpRequest deal with asynchronous function
+            const log = document.querySelector(".event-log");
+
+            document.querySelector("#xhr").addEventListener("click", () => {
+                log.textContent = "";
+                
+                // Start dealing with a asynchronous function
+                const xhr = new XMLHttpRequest();
+                
+                xhr.addEventListener("loadend", () => {
+                    log.textContent = `${log.textContent}Finished with status: ${xhr.status}`;
+                });
+
+                xhr.open("GET", "https://raw.githubusercontent.com/mdn/content/main/files/en-us/_wikihistory.json");
+                xhr.send();
+                log.textContent = `${log.textContent}Started XHR request\n`;
+            });
+
+            document.querySelector("#reload").addEventListener("click", () => {
+                log.textContent = "";
+                // reloads the current webpage — the same as pressing the browser’s refresh button
+                document.location.reload();
+            });
+
+            function doOperation() {
+                doStep1(0, (result1) => {
+                    doStep2(result1, (result2) => {
+                    doStep3(result2, (result3) => {
+                        console.log(`result: ${result3}`);
+                    });
+                    });
+                });
+            }
+
+        </script>
+    </body>
+</html>
