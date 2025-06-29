@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Function practice page</title>
+        <!-- <script src="scripts/first.js"></script>
+        <script src="scripts/second.js"></script> -->
+    </head>
+
+    <body>
+        <h2>Arrow function demo: keydown</h2>
+        <section class="keyDownSec">
+            <input id="keyDown" type="text"/>
+            <p></p>
+        </section>
+
+
+
+        <script>
+            const keyDownInput = document.querySelector(".keyDownSec input");
+            const keyDownPara = document.querySelector(".keyDownSec p");
+
+            keyDownInput.addEventListener("keydown", event => {
+                keyDownPara.textContent = `You pressed ${event.key}`;
+            });
+        </script>
+
+        <!-- <script>
+            greeting();
+        </script> -->
+    </body>
+</html>

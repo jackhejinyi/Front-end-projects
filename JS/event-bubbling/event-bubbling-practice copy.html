@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width" />
+        <title>Event bubbling pracitce</title>
+    </head>
+
+    <body>
+        <h2>Event bubble up demo</h2>
+        <div id="container">
+            <button>Click me!</button>
+        </div>
+        <pre id="output"></pre>
+    <script>
+        const container = document.querySelector("#container");
+        const output = document.querySelector("#output");
+
+        function handleClick(e) {
+            output.textContent += `You clicked on ${e.currentTarget.tagName} element.\n`;
+        }
+
+        // Scenario #1: add a linsterner on "Click me!" button is in div tag
+        // container.addEventListener("click", handleClick);
+
+        // Scenario #2
+        // const btn = document.querySelector("button");
+
+        // document.body.addEventListener("click", handleClick);
+        // container.addEventListener("click", handleClick);
+        // btn.addEventListener("click", handleClick);
+
+        // Scenario #3
+        const button = document.querySelector("button");
+
+        document.body.addEventListener("click", handleClick, { capture: true});
+        container.addEventListener("click", handleClick, { capture: true});
+        button.addEventListener("click", handleClick);
+    </script>
+    </body>
+</html>

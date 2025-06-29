@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Function library example</title>
+    <style>
+        input {
+        font-size: 2em;
+        margin: 10px 1px 0;
+        }
+    </style>
+    </head>
+
+    <body>
+        <h2>Task #1 print a name selected randomly</h2>
+        
+        <section class="task1-section">
+        </section>
+        
+        <script>
+
+        // Task #1
+        const names = [
+            'Chris', 
+            'Li Kang', 
+            'Anne', 
+            'Francesca', 
+            'Mustafa', 
+            'Tina', 
+            'Bert', 
+            'Jada'
+        ];
+        
+        const task1Para = document.createElement("p");
+        const task1Sec = document.querySelector(".task1-section");
+        
+        function choiceName() {
+            // console.log(names.length);
+            const index = Math.floor(Math.random() * names.length); 
+            // console.log(index);           
+            return names[index];  
+        }
+        
+
+        // Don't edit the code below here!
+
+        task1Sec.innerHTML = " ";
+
+        task1Para.textContent = choiceName();
+        task1Sec.appendChild(task1Para);    
+        </script>
+    </body>
+</html>

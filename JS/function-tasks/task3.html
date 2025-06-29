@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Function library example</title>
+    <style>
+        input {
+        font-size: 2em;
+        margin: 10px 1px 0;
+        }
+    </style>
+    </head>
+
+    <body>
+        <h2>Task #3 Optimize task #1</h2>
+        
+        <section class="task3-section">
+        </section>
+        
+        <script>
+
+        // Task #1
+        const names = [
+            'Chris', 
+            'Li Kang', 
+            'Anne', 
+            'Francesca', 
+            'Mustafa', 
+            'Tina', 
+            'Bert', 
+            'Jada'
+        ];
+        
+        const task3Para = document.createElement("p");
+        const task3Sec = document.querySelector(".task3-section");
+
+        // Refactor and define a function
+        function getIndex() {
+            return Math.floor(Math.random() * names.length);
+        }
+        
+        function choiceName() {
+            const index = getIndex(); 
+            return names[index];  
+        }
+        
+
+        // Don't edit the code below here!
+
+        task3Sec.innerHTML = " ";
+
+        task3Para.textContent = choiceName();
+        task3Sec.appendChild(task3Para);    
+        </script>
+    </body>
+</html>

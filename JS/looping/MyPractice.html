@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Looping practice page</title>
+    </head>
+
+    <body>
+        <h2>Break statement example</h2>
+        <section class="contactSec">
+            <label for="contact">Search by contact name: </label>
+            <input type="text" id="contact" />
+            <button class="contactButton">Search</button>
+
+            <p></p>
+        </section>
+
+        <h2>Continue statement example</h2>
+        <section class="findIntSquare">
+            <label for="number">Enter number: </label>
+            <input id="number" type="number"/>
+            <button>Generate integer squares</button>
+            <p>Output: </p>
+        </section>
+
+        <script>
+            const contacts = [
+                "Chris:2232322",
+                "Sarah:3453456",
+                "Bill:7654322",
+                "Mary:9998769",
+                "Dianne:9384975",
+            ];
+            
+            const contactInput = document.querySelector("#contact");
+            const contactPara = document.querySelector(".contactSec p");
+            const contactButton = document.querySelector(".contactButton");
+            
+            contactButton.addEventListener("click", () => {
+                const search = contactInput.value.toLowerCase();
+
+                contactInput.value = ""; // Reset input for next search
+                contactInput.focus(); // Make cursor available for next search
+                contactPara.textContent = "";
+
+                for (let i = 0; i < contacts.length; i++){
+                    // Split contact
+                    const  contact = contacts[i].split(":");  
+                    // Traverse the array to search
+                    if (search === contact[0].toLowerCase()){
+                        contactPara.textContent = `${contact[0]}'s number is ${contact[1]}`;
+                        break; // Quit from the loop
+                    }
+                }
+                
+                if (contactPara.textContent === ""){
+                    contactPara.textContent = "Contact not found.";
+                }
+            });
+        </script>
+
+        <script>
+            const numberInput = document.querySelector("#number");
+            const numberPara = document.querySelector(".findIntSquare p");
+            const numberButton = document.querySelector(".findIntSquare button");
+
+            numberButton.addEventListener("click", () => {
+                const input = numberInput.value;
+
+                numberInput.value = "";
+                numberInput.focus();
+                numberPara.textContent = "Output: ";
+
+                for (let i = 1; i <= input; i++ ) {
+                    const rqtNumb = Math.sqrt(i);
+                    if (Math.floor(rqtNumb) !== rqtNumb) {
+                        continue;
+                    } 
+                    else {
+                        numberPara.textContent = `${numberPara.textContent} ${i}`;
+                    }
+                }
+            });
+        </script>
+        </script>
+    </body>
+</html>

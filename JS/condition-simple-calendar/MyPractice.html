@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width" />
+        <title>Simple Calendar</title>
+    </head>
+
+    <body>
+        <section>
+            <label for="month">Select month:</label>
+            <select id="month">
+                <option value="January" selected>January</option>
+                <option value="February">February</option>
+                <option value="March">March</option>
+                <option value="April">April</option>
+                <option value="May">May</option>
+                <option value="June">June</option>
+                <option value="July">July</option>
+                <option value="August">August</option>
+                <option value="September">September</option>
+                <option value="October">October</option>
+                <option value="Novemver">Novemver</option>
+                <option value="December">December</option>
+            </select>
+            <h1></h1>
+            <ul>
+
+            </ul>
+
+        </section>
+
+        
+        
+        <script>
+            const select = document.querySelector("#month");
+            const calendarHead = document.querySelector("section h1");
+            const list = document.querySelector("section ul");
+
+
+            select.addEventListener("change", createCalendar);
+            
+            function createCalendar(month){
+                // const month = select.value;
+                calendarHead.textContent = month;
+                let days
+                list.textContent = "";
+                
+                switch (month){
+                    case "January" :
+                        days = 31;
+                        break;
+                    case "February" :
+                        days = 28;
+                        break;
+                    case "March" :
+                        days = 31;
+                        break;
+                    case "April" :
+                        days = 30;
+                        break;
+                    case "May" :
+                        days = 31;
+                        break;
+                    case "June" :
+                        days = 30;
+                        break;
+                    case "July" :
+                        days = 31;
+                        break;
+                    case "August" :
+                        days = 31;
+                        break;
+                    case "September" :
+                        days = 30;
+                        break;
+                    case "October" :
+                        days = 31;
+                        break;
+                    case "November" :
+                        days = 30;
+                        break;
+                    case "December" :
+                        days = 31;
+                        break;
+                    default:
+                        days = 31;
+                        break;
+            }
+
+                for (let i = 1; i <= days; i++){
+                    const li = document.createElement("li");
+                    li.textContent = i;
+                    list.appendChild(li);
+                }                 
+            }
+        </script>
+    </body>
+</html>

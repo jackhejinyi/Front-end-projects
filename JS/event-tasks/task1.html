@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width" />
+        <title>Event task #1 page</title>
+    </head>
+
+    <body>
+        <button class="off">Machine is off</button>
+        
+        <script>
+            const btn = document.querySelector(".off");
+
+            btn.addEventListener("click", () => {
+                if (btn.textContent === "Machine is off") {
+                    btn.textContent = "Machine is on"; 
+                } else {
+                    btn.textContent = "Machine is off";
+                } 
+            });
+        </script>    
+    </body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Function library example</title>
+  <style>
+    input {
+      font-size: 2em;
+      margin: 10px 1px 0;
+    }
+  </style>
+  </head>
+<body>
+
+  <input class="numberInput" type="text">
+  <p></p>
+
+  <script>
+    const input = document.querySelector('.numberInput');
+    const para = document.querySelector('p');
+
+    function square(numb) {
+        return numb * numb;
+    }
+
+    function cube(numb) {
+        return numb * numb * numb;
+    }
+
+    function factorial(numb) {
+        if (numb < 0) return undefined;
+        if (numb === 0) return 1;
+        let x =  numb - 1;
+        while (x > 1) {
+            numb *= x;
+            console.log(numb);
+            x--;
+        }
+        return numb;
+    }
+
+    // Add event listener
+    input.addEventListener("change", () => {
+        const numb = parseFloat(input.value);
+        // Reset input value
+        input.value = "";
+        input.focus();
+        para.textContent = "";
+        
+        if (isNaN(numb)) {
+            para.textContent = "You need to enter a number!";
+        } else {
+            para.textContent += `${numb} square: ${square(numb)} `;
+            para.textContent += `${numb} cube: ${cube(numb)} `;
+            para.textContent += `${numb} factorial: ${factorial(numb)}`;
+        }
+    });
+
+  </script>
+</body>
+</html>

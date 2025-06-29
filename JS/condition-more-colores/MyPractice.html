@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width" />
+        <title>More colors</title>
+        <style>
+            section {
+                width: 800px;
+                height: 600px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <section>
+            <label for="selection">Select theme</label>
+            <select id="selection">
+                <option value="white" selected>While</option>
+                <option value="black">Black</option>
+                <option value="purple">Purple</option>
+                <option value="yellow">Yellow</option>
+                <option value="blue">Blue</option>
+            </select>
+            <p >This is my website.</p>
+        </section>
+
+        <script>
+            const section = document.querySelector("section");
+            // const para = document.querySelector("p");
+            const selection = document.querySelector("#selection");
+            // const body = document.querySelector("body"); 
+
+            selection.addEventListener("change", () => {
+                let backgroundColor = selection.value;
+                let textColor;
+
+                switch (backgroundColor){
+                        case "white":
+                            textColor = "red";
+                            break;
+                        case "black":
+                            textColor = "white";
+                            break;
+                        case "purple":
+                            textColor = "white";
+                            break;
+                        case "yellow":
+                            textColor = "blue";
+                            break;
+                        case "blue":
+                            textColor = "white";
+                            break;
+                        default:
+                            textColor = "white";
+                            break;
+                }
+                update(backgroundColor, textColor);
+            });
+
+            function update(backgroundColor, textColor){
+                // selection.textContent = backgroundColor.toUpperCase();
+                section.style.backgroundColor = backgroundColor;
+                section.style.color = textColor; 
+            }
+            
+            // Set background color by defaul
+            update("white", "black");
+        </script>
+    </body>
+</html>

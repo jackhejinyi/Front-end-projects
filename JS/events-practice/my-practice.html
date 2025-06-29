@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width"/>
+        <title>Event practice page</title>
+        <style>
+            button {
+                margin-top: 10px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h2>Practice: change background color randomly</h2>
+        <button class="changeColorBtn">Change background color</button>
+
+        <h2>Focus and unfocus demo</h2>
+        <div class="eventSec">
+            <label for="inputField">Enter your input: </label>
+            <input type="text" id="inputField"/><br>
+            <button>Double click button</button><br>
+            <button class="removeBackgroundColor">Remove background color</button>
+            <button class="eventObject">Add event using event object</button>
+        </div>
+
+        <h2>Extrac props on event object</h2>
+        <input type="text" id="eventObjInput"/>
+        <div id="eventObjDiv"></div>
+
+        <section class="submitFormSec">
+            <h2>Submit a form</h2>
+            <form>
+                <div>
+                    <label for="fName">First Name: </label>
+                    <input id="fName" type="text">
+                </div>
+                <div>
+                    <label for="lName">Last name: </label>
+                    <input id="lName" type="text">
+                </div>
+                <div>
+                    <input id="submit" type="submit">
+                </div>
+            </form>
+            <p></p>
+
+        </section>
+
+        <script>
+
+            // click event handle demo
+            const changeColorBtn = document.querySelector(".changeColorBtn");
+
+            function random(number){
+                return Math.floor(Math.random() * (number + 1));
+            }
+
+            function changeBackgroundColor(){
+                const control = `rgb(${random(255)} ${random(255)} ${random(255)})`;
+                document.body.style.backgroundColor = control;
+            }
+            
+            changeColorBtn.addEventListener("click", changeBackgroundColor);
+            changeColorBtn.addEventListener("focus", changeBackgroundColor);
+            changeColorBtn.addEventListener("blur", changeBackgroundColor);
+
+            // Some common events demo
+            const input = document.querySelector("#inputField");
+            const eventSec = document.querySelector(".eventSec");
+
+            input.addEventListener("focus", () =>{
+                console.log("Called a focus event");
+                eventSec.style.backgroundColor = "lightblue";
+            });
+
+             input.addEventListener("blur", () =>{
+                console.log("Called a unfocus event");
+                eventSec.style.backgroundColor = "";
+            });
+
+            // Double click button demo
+            const dblBtn = document.querySelector(".eventSec button");
+            dblBtn.addEventListener("dblclick", () =>{
+                console.log("Called dbl click envent");
+            });
+
+            // Mouse over and mouse out demo
+            dblBtn.addEventListener("mouseover", () => {
+                console.log("Called mouse over event.");
+            });
+
+            dblBtn.addEventListener("mouseout", () => {
+                console.log("Called mouse out event.");
+            });
+
+            // Remove event listener
+            const removeBGColorBtn = document.querySelector(".removeBackgroundColor"); 
+
+            removeBGColorBtn.removeEventListener("click", changeBackgroundColor);
+
+            // event object demo
+            function changeBackgroundColorWithEvent(e){
+                const control = `rgb(${random(255)} ${random(255)} ${random(255)})`;
+                e.target.style.changeBackgroundColor = control;
+                console.log(e);    
+            }
+
+            const eventObjectBtn = document.querySelector(".eventObject");
+
+            eventObjectBtn.addEventListener("click", changeBackgroundColorWithEvent);     
+
+            // event object to extract keydown
+            const eventObjInput = document.querySelector("#eventObjInput");
+            const eventObjDiv = document.querySelector("#eventObjDiv");
+
+            eventObjInput.addEventListener("keydown", (event) =>{
+                eventObjDiv.textContent = `You pressed ${event.key}.`;
+            });
+
+            // Submit a form
+            const firstInput = document.querySelector("#fName");
+            const lastInput = document.querySelector("#lName");
+            const submitFormPara = document.querySelector(".submitFormSec p");
+            const nameSubmitForm = document.querySelector(".submitFormSec form");
+
+            // submitFormPara.textContent = "";
+
+            nameSubmitForm.addEventListener("submit", (e) => {
+                if (firstInput.value === "" || lastInput.value === "") {
+                    e.preventDefault();
+                    submitFormPara.textContent = "You need to fill both names.";
+                } else {
+                    submitFormPara.textContent("You submitted your name.");
+                }
+            });
+        </script>
+    </body>
+</html>

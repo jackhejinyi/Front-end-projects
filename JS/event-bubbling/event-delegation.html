@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width" />
+        <title>Event bubbling pracitce</title>
+        <style>
+            #container {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                grid-auto-rows: 100px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h2>Event delegation demo</h2>
+        <div id="container">
+            <button class="tile"></button>
+            <button class="tile"></button>
+            <button class="tile"></button>
+            <button class="tile"></button>
+            <button class="tile"></button>
+            <button class="tile"></button>
+            <button class="tile"></button>
+            <button class="tile"></button>
+            <button class="tile"></button>
+            <button class="tile"></button>
+            <button class="tile"></button>
+            <button class="tile"></button>
+            <button class="tile"></button>
+            <button class="tile"></button>
+            <button class="tile"></button>
+            <button class="tile"></button>
+        </div>
+        <pre id="output"></pre>
+    <script>
+        function random(number) {
+            return Math.floor(Math.random() * number);
+        }
+
+        function bgChange() {
+            const rndCol = `rgb(${random(255)} ${random(255)} ${random(255)})`;
+            return rndCol;
+        }
+
+        const container = document.querySelector("#container");
+
+        container.addEventListener("click", (e) => {
+            console.log(`e.target: ${e.target.tagName} e.currentTarget: ${e.currentTarget.tagName}`);
+            e.target.style.backgroundColor = bgChange();
+        });
+    </script>
+    </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Function tasks</title>
+    </head>
+
+    <body>
+        <h2>Task #2: draw a rectangle</h2>
+        <button>Draw rectangle</button>
+        <canvas>
+        </canvas>
+
+        <script>
+            const canvas = document.querySelector("canvas");
+            const ctx = canvas.getContext("2d");
+            
+            const x = 50;
+            const y = 60;
+            const width = 200;
+            const height = 175;
+            const color = "blue";
+            
+            const btn = document.querySelector("button");
+            
+            document.addEventListener("DOMContentLoaded", () => {
+                canvas.width = document.documentElement.clientWidth;
+                canvas.height = document.documentElement.clientHeight;
+                // canvas.width = window.innerWidth;
+                // canvas.height = window.innerHeight;
+                // console.log(canvas.width, canvas.height);
+            });
+
+            function draw(x, y, width, height, color) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.beginPath(); // Start a new shape.
+                ctx.fillStyle = color; // Set rectangle's color
+                ctx.rect(x, y, width, height);
+                ctx.fill();
+            }
+
+            btn.addEventListener("click", () => {
+                draw(x, y, width, height, color);
+            });
+
+        </script>
+
+    </body>
+</html>
