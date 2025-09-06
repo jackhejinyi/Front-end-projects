@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Calculator</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div id="app">
+        <form>
+            <div>
+                <label for="initial-amount">Initial Amount ($):</label>
+                <input type="number" id="initial-amount" defaultValue="10000" />
+            </div>
+            <div>
+                <label for="yearly-contribution">Yearly Contribution ($):</label>
+                <input type="number" id="yearly-contribution" defaultValue="500" />
+            </div>
+            <div>
+                <label for="expected-return">Expected Interest (%, per year):</label>
+                <input type="number" id="expected-return" step="0.01" defaultValue="0.05" />
+            </div>
+            <div>
+                <label for="duration">Investment Duration (years):</label>
+                <input type="number" id="duration" defaultValue="10" />
+            </div>
+            <button type="submit">Calculate</button>
+        </form>
+    </div>
+    <script type="module" src="../dist/index.js"></script>
+</body>
+</html>
